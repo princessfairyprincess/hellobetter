@@ -6,8 +6,8 @@
  * @link       https://example.com
  * @since      1.0.0
  *
- * @package    Hellobetter_Pop_Up
- * @subpackage Hellobetter_Pop_Up/public/partials
+ * @package    HB_PopUp
+ * @subpackage HB_PopsUp/public/partials
  */
 
 /**

@@ -3,7 +3,7 @@ services:
   db: 
     image: mysql:latest
     volumes:
-    - C:/Users/jessi/docker_volumes/hellobetter/mysql:/var/lib/mysql
+    - ~/docker_volumes/hellobetter/mysql:/var/lib/mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: hellobetter
@@ -28,7 +28,7 @@ services:
      - db
     image: wordpress:php8.0
     volumes: 
-    - C:/Users/jessi/Documents/git/hellobetter/wp-content:/var/www/html/wp-content
+    - ~/PhpstormProjects/hellobetter/wp-content:/var/www/html/wp-content
     ports: 
     - 8083:80
     restart: always
