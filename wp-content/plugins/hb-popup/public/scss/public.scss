@@ -16,6 +16,7 @@ $overlay: rgba(0,0,0,0.3);
 $cta_blue: #5770EF;
 
 //Typography
+@import '../fonts/style.css';
 $tisa_regular: 'Tisa Sans Pro Regular', sans-serif;
 $tisa_bold: 'Tisa Sans Pro Bold', sans-serif;
 $tisa_heavy: 'Tisa Sans Pro Extra Bold', sans-serif;
@@ -58,7 +59,7 @@ html {
 }
 
 .hb-popup-container {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -67,6 +68,10 @@ html {
     position: absolute;
     width: 100vw;
     height: 100vh;
+
+    &.active {
+        display: flex;
+    }
     
     @media screen and (min-width: $desktop) {
         padding: 0;
@@ -74,6 +79,7 @@ html {
     .hb-popup {
         background-color: white;
         width: 100%;
+        border-radius: 16px;
         @media screen and (min-width: $desktop) {
             width: 38%;
             max-width: 484px;
@@ -93,27 +99,49 @@ html {
                         }
 
                         .image-container {
-                            padding-top: 26.40%;
-
+                            border-radius: 8px;
                             @media screen and (min-width: $desktop) {
-                                padding-top: 100%;
                                 width: 24%;
                             }
                             .image {
+                                width: 100%;
+                                height: auto;
+                                display: block;
+                                padding-top: 26.40%;
                                 background-position: center;
                                 background-size: cover;
                                 background-repeat: no-repeat;
+
+                                @media screen and (min-width: $desktop) {
+                                    padding-top: 100%;
+                                }
                             }
                         }
                         .text-container {
+                            display: flex;
+                            flex-direction: column;
+                            line-height: 1.5;
+
                             @media screen and (min-width: $desktop) {
                                 width: 63%;
                             }
                             .heading {
-
+                                h1 {
+                                    font-family: $tisa_bold;
+                                    margin: 0;
+                                    color: $charcoal;
+                                    font-size: 1.25rem;
+                                    line-height: inherit;
+                                }
                             }
                             .body {
-
+                                font-family: $tisa_regular;
+                                color: $graphite;
+                                font-size: 1.125rem;
+                                line-height: inherit;
+                                p {
+                                    margin: 0;
+                                }
                             }
                         }
                         
@@ -124,6 +152,8 @@ html {
                     .cta-inner {
                         .form-container {
                             .popup-form {
+                                display: flex;
+                                flex-direction: column;s
                                 #email {
 
                                 }

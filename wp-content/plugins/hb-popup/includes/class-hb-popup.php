@@ -106,7 +106,6 @@ class HB_PopUp
     public function get_markup()
     {
         include (plugin_dir_path(__DIR__) . 'public/partials/hb-popup-public.php');
-        //return plugin_dir_path(__DIR__) . 'public/partials/hb-popup-public';
     }
 
     public function load_hb_popup()
