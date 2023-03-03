@@ -1,0 +1,43 @@
+version: "3"
+services: 
+  db: 
+    image: mysql:latest
+    volumes:
+    - C:/Users/jessi/docker_volumes/hellobetter/mysql:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: hellobetter
+      MYSQL_DATABASE: hellobetter
+      MYSQL_USER: hellobetter
+      MYSQL_PASSWORD: hellobetter
+
+  myAdmin:
+    depends_on:
+      - db
+    image: phpmyadmin:latest
+    restart: always
+    ports:
+      - 8082:80
+    environment:
+      - MEMORY_LIMIT=2048M
+      - UPLOAD_LIMIT=2048M
+      - PMA_HOST=db:3306
+
+  wordpress:
+    depends_on: 
+     - db
+    image: wordpress:php8.0
+    volumes: 
+    - C:/Users/jessi/Documents/git/hellobetter/wp-content:/var/www/html/wp-content
+    ports: 
+    - 8083:80
+    restart: always
+    environment:
+      - WORDPRESS_DB_HOST=db:3306
+      - WORDPRESS_DB_USER=hellobetter
+      - WORDPRESS_DB_PASSWORD=hellobetter
+      - WORDPRESS_DB_NAME=hellobetter
+      - WORDPRESS_DEBUG=1
+      - WORDPRESS_CONFIG_EXTRA= 
+          define('WP_DEBUG_DISPLAY', false);
+          define('WP_DEBUG_LOG', true);

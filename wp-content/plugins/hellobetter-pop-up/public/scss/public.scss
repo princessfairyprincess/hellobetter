@@ -1,0 +1,164 @@
+/**
+*  Styles for pop-up on front-end
+*/
+
+/**
+*  Variables and Mixins
+*/
+
+//Palette
+$charcoal: #363B3B;
+$moss: #037D6B;
+$nectarine: #F06152;
+$graphite: #596666;
+$pebble: #B0C2C2;
+$overlay: rgba(0,0,0,0.3);
+$cta_blue: #5770EF;
+
+//Typography
+$tisa_regular: 'Tisa Sans Pro Regular', sans-serif;
+$tisa_bold: 'Tisa Sans Pro Bold', sans-serif;
+$tisa_heavy: 'Tisa Sans Pro Extra Bold', sans-serif;
+
+//Elements
+@mixin button {
+    width: 100%;
+    border-radius: 8px;
+    text-align: center;
+    padding: 16px 0;
+    font-family: $tisa_bold;
+    font-family: 1.25rem;
+    line-height: 1.5;
+}
+
+@mixin button-primary {
+    @include button;
+    background-color: $moss;
+    color: white;
+}
+
+@mixin button-secondary {
+    @include button;
+    background-color: white;
+    color: $moss;
+}
+
+//Layout
+$desktop: 78.75rem;
+
+/**
+*  Styles
+*/
+
+html {
+    &.hb-popup-active {
+        position: relative;
+        overflow-y: hidden;
+    }
+}
+
+.hb-popup-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $overlay;
+    padding: 0 20px;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    
+    @media screen and (min-width: $desktop) {
+        padding: 0;
+    }
+    .hb-popup {
+        background-color: white;
+        width: 100%''
+        @media screen and (min-width: $desktop) {
+            width: 38%;
+            max-width: 484px;
+        }
+        .hb-popup-inner {
+            padding: 32px;
+            .hb-popup-content {
+                .hb-copy {
+                    .copy-inner {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: start;
+
+                        @media screen and (min-width: $desktop) {
+                            flex-direction: row;
+                            grid-gap: 16px;
+                        }
+
+                        .image-container {
+                            padding-top: 26.40%;
+
+                            @media screen and (min-width: $desktop) {
+                                padding-top: 100%;
+                                width: 24%;
+                            }
+                            .image {
+                                background-position: center;
+                                background-size: cover;
+                                background-repeat: no-repeat;
+                            }
+                        }
+                        .text-container {
+                            @media screen and (min-width: $desktop) {
+                                width: 63%;
+                            }
+                            .heading {
+
+                            }
+                            .body {
+
+                            }
+                        }
+                        
+                    }
+                }
+
+                .hb-cta {
+                    .cta-inner {
+                        .form-container {
+                            .popup-form {
+                                #email {
+
+                                }
+                                #submit {
+
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .close-container {
+                    &.desktop {
+                        display: none;
+                        @media screen and (min-width: $desktop) {
+                            width: 6%;
+                            display: block;
+                        }
+                      .close-icon {
+  
+                      }
+                    } 
+                    
+                    &.mobile {
+                        display: block;
+                        @media screen and (min-width: $desktop) {
+                            display: none;
+                        }
+                      .close-button {
+                        @include button-secondary;
+                      }
+                    }
+              }
+            }
+            
+        }
+    }
+}
