@@ -37,6 +37,12 @@ $tisa_heavy: 'Tisa Sans Pro Extra Bold', sans-serif;
     text-align: center;
     font-size: 1.25rem;
     line-height: 1.1;
+    cursor: pointer;
+    transition: $ease;
+
+    &.wait {
+        opacity: 0.6;
+    }
 }
 
 @mixin button-primary {
@@ -94,22 +100,26 @@ html {
 }
 
 .hb-popup-container {
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: $overlay;
     padding: 0 20px;
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 100vh;
-    z-index: 99999;
+    z-index: -99999;
     opacity: 0;
-    transition: $fade-in;
+
+    &.anim {
+        transition: $fade-in;
+    }
 
     &.active {
-        display: flex;
         opacity: 1;
+        z-index: 9999;
+        display: flex;
     }
     
     @media screen and (min-width: $desktop) {
@@ -121,19 +131,27 @@ html {
         max-width: 335px;
         border-radius: 16px;
         font-family: $tisa_regular;
+        overflow: hidden;
         @media screen and (min-width: $desktop) {
             width: 38%;
             max-width: 484px;
         }
         .hb-popup-inner {
             padding: 24px 16px;
+            transition: $ease;
+            display: flex;
+            flex-direction: row;
+            grid-gap: 32px;
+            width: 200%;
             @media screen and (min-width: $desktop) {
                 padding: 32px;
+                grid-gap: 64px;
             }
             .hb-popup-content {
                 display: flex;
                 flex-direction: column;
                 grid-gap: 16px;
+                width: 50%;
                 @media screen and (min-width: $desktop) {
                     grid-gap: 24px;
                 }
@@ -144,8 +162,48 @@ html {
                         align-items: start;
                         grid-gap: 16px;
 
+                        &.flex-col {
+                            flex-direction: column;
+                            align-items: center;
+                        }
+
                         @media screen and (min-width: $desktop) {
                             flex-direction: row;
+                        }
+
+                        .inner-top {
+                            width: 100%;
+                            @media screen and (min-width: $desktop) {
+                                display: flex;
+                                flex-direction: row;
+                                grid-gap: 40px;
+                                align-items: start;
+                            }
+
+
+                            .image-container {
+                                width: 100%;
+                                display: flex;
+                                justify-content: center;
+                                @media screen and (min-width: $desktop) {
+                                    width: 80%;
+                                    justify-content: end;
+                                }
+                                img {
+                                    display: block;
+                                }
+                            }
+
+                            .close-container {
+                                @media screen and (min-width: $desktop) {
+                                    width: 20%;
+                                }
+                                .close-icon {
+                                    width: 100%;
+                                    display: flex;
+                                    justify-content: end;
+                                }
+                            }
                         }
 
                         .image-container {
@@ -173,6 +231,12 @@ html {
                             display: flex;
                             flex-direction: column;
                             line-height: 1.5;
+
+                            &.center {
+                                align-items: center;
+                                text-align: center;
+                                width: 100%;
+                            }
 
                             @media screen and (min-width: $desktop) {
                                 width: 63%;
@@ -241,6 +305,9 @@ html {
                 }
 
                 .close-container {
+                    .hb-close {
+                        cursor: pointer;
+                    }
                     &.desktop {
                         display: none;
                         @media screen and (min-width: $desktop) {
@@ -262,6 +329,27 @@ html {
                       }
                     }
               }
+
+                &.hb-cta-section {
+
+                }
+
+                &.hb-success-section {
+                    justify-content: center;
+                    .hb-cta {
+                        @media screen and (min-width: $desktop) {
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+            &.cta-active {
+                transform: translateX(0);
+            }
+
+            &.success-active {
+                transform: translateX(-50%);
             }
             
         }
