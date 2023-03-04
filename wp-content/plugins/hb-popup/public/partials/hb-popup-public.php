@@ -24,7 +24,7 @@ $email_error = "Bitte schreibe deine Email in dieser Form: beispiel@email.de";
 $submit_label = "Senden";
 $close_label = "Schließen";
 $success_img = "/wp-content/plugins/hb-popup/public/img/hb-success-img.svg";
-$success_heading= "Perfekt, das hat geklappt!";
+$success_heading = "Perfekt, das hat geklappt!";
 $success_body = "Danke, dass du dich für unseren Newsletter angemeldet hast. Sei gespannt, dich erwarten schon bald viele spannende Strategien und Tipps aus der Welt der Psychologie und Psychotherapie!";
 ?>
 
@@ -32,6 +32,7 @@ $success_body = "Danke, dass du dich für unseren Newsletter angemeldet hast. Se
 <div class="hb-popup-container">
     <div class="hb-popup">
         <div class="hb-popup-inner cta-active">
+            <!--CTA View-->
             <div class="hb-popup-content hb-cta-section">
                 <div class="hb-copy">
                     <div class="copy-inner">
@@ -80,18 +81,21 @@ $success_body = "Danke, dass du dich für unseren Newsletter angemeldet hast. Se
                     </div>
                 </div>
             </div>
+            <!--Success View-->
             <div class="hb-popup-content hb-success-section">
                 <div class="hb-copy">
                     <div class="copy-inner flex-col">
                         <div class="inner-top">
                             <div class="image-container">
-                                <img src="<?php echo $success_img; ?>" alt="<?php echo $success_heading; ?>" width="200px" height="auto">
+                                <img src="<?php echo $success_img; ?>" alt="<?php echo $success_heading; ?>"
+                                     width="200px" height="auto">
                             </div>
                             <div class="close-container desktop">
                                 <div class="hb-close close-icon">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M5 5L12 12M19 19L12 12M12 12L19 5L5 19" stroke="#868989" stroke-width="2"
+                                        <path d="M5 5L12 12M19 19L12 12M12 12L19 5L5 19" stroke="#868989"
+                                              stroke-width="2"
                                               stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </div>

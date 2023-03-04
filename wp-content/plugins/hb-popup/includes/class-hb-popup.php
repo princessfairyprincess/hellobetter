@@ -37,10 +37,6 @@ class HB_PopUp
     /**
      * Define the core functionality of the plugin.
      *
-     * Set the plugin name and the plugin version that can be used throughout the plugin.
-     * Load the dependencies, define the locale, and set the hooks for the admin area and
-     * the public-facing side of the site.
-     *
      * @since    1.0.0
      */
 
@@ -52,7 +48,6 @@ class HB_PopUp
             $this->version = '1.0.0';
         }
         $this->plugin_name = 'hb-popup';
-        //$this->load_hb_popup();
 
     }
 
@@ -103,10 +98,22 @@ class HB_PopUp
 
     }
 
+    /**
+     * Get the public-facing markup
+     *
+     * @since   1.0.0
+     */
+
     public function get_markup()
     {
-        include (plugin_dir_path(__DIR__) . 'public/partials/hb-popup-public.php');
+        include(plugin_dir_path(__DIR__) . 'public/partials/hb-popup-public.php');
     }
+
+    /**
+     * Load markup only if the page loaded is the default post type
+     *
+     * @since   1.0.0
+     */
 
     public function load_hb_popup()
     {

@@ -17,21 +17,22 @@
  */
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
+if (!defined('WPINC')) {
     die;
 }
 
 /**
  * Current plugin version.
  */
-define( 'HB_POPUP_VERSION', '1.0.0' );
+define('HB_POPUP_VERSION', '1.0.0');
 
 /**
  * Load up plugin files
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-hb-popup.php';
+require plugin_dir_path(__FILE__) . 'includes/class-hb-popup.php';
 
-function hb_load_plugin() {
+function hb_load_plugin()
+{
     $plugin = new HB_PopUp();
     $plugin->enqueue_scripts();
     $plugin->enqueue_styles();
