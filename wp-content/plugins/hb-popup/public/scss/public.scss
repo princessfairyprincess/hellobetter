@@ -15,33 +15,68 @@ $pebble: #B0C2C2;
 $overlay: rgba(0,0,0,0.3);
 $cta_blue: #5770EF;
 
+//Effects
+$ease: all ease 0.3s;
+$fade-in: opacity ease 1s;
+
 //Typography
 @import '../fonts/style.css';
 $tisa_regular: 'Tisa Sans Pro Regular', sans-serif;
 $tisa_bold: 'Tisa Sans Pro Bold', sans-serif;
 $tisa_heavy: 'Tisa Sans Pro Extra Bold', sans-serif;
 
+@mixin error-text {
+    color: $nectarine;
+    font-size: 0.6875rem;
+}
+
 //Elements
 @mixin button {
     width: 100%;
     border-radius: 8px;
     text-align: center;
-    padding: 16px 0;
-    font-family: $tisa_bold;
     font-size: 1.25rem;
-    line-height: 1.5;
+    line-height: 1.1;
 }
 
 @mixin button-primary {
     @include button;
     background-color: $moss;
+    font-family: $tisa_regular;
     color: white;
+    padding: 16px 0;
 }
 
 @mixin button-secondary {
     @include button;
+    border-style: none;
     background-color: white;
+    font-family: $tisa_bold;
     color: $moss;
+    padding: 0;
+}
+
+@mixin text-input {
+    border-radius: 10px;
+    border: solid 1px $pebble;
+    padding: 12px 16px;
+    font-size: 1.125rem;
+    font-family: $tisa_regular;
+    color: $charcoal;
+    transition: $ease;
+
+    &:focus, &:focus-visible, &:active {
+        border-color: $cta_blue;
+        outline: unset;
+    }
+
+    &::placeholder {
+        color: $pebble;
+    }
+
+    &.error {
+        border-color: $nectarine;
+    }
 }
 
 //Layout
@@ -68,9 +103,13 @@ html {
     position: absolute;
     width: 100vw;
     height: 100vh;
+    z-index: 99999;
+    opacity: 0;
+    transition: $fade-in;
 
     &.active {
         display: flex;
+        opacity: 1;
     }
     
     @media screen and (min-width: $desktop) {
@@ -79,27 +118,40 @@ html {
     .hb-popup {
         background-color: white;
         width: 100%;
+        max-width: 335px;
         border-radius: 16px;
+        font-family: $tisa_regular;
         @media screen and (min-width: $desktop) {
             width: 38%;
             max-width: 484px;
         }
         .hb-popup-inner {
-            padding: 32px;
+            padding: 24px 16px;
+            @media screen and (min-width: $desktop) {
+                padding: 32px;
+            }
             .hb-popup-content {
+                display: flex;
+                flex-direction: column;
+                grid-gap: 16px;
+                @media screen and (min-width: $desktop) {
+                    grid-gap: 24px;
+                }
                 .hb-copy {
                     .copy-inner {
                         display: flex;
                         flex-direction: column;
                         align-items: start;
+                        grid-gap: 16px;
 
                         @media screen and (min-width: $desktop) {
                             flex-direction: row;
-                            grid-gap: 16px;
                         }
 
                         .image-container {
                             border-radius: 8px;
+                            width: 100%;
+                            overflow: hidden;
                             @media screen and (min-width: $desktop) {
                                 width: 24%;
                             }
@@ -137,8 +189,11 @@ html {
                             .body {
                                 font-family: $tisa_regular;
                                 color: $graphite;
-                                font-size: 1.125rem;
+                                font-size: 1rem;
                                 line-height: inherit;
+                                @media screen and (min-width: $desktop) {
+                                    font-size: 1.125rem;
+                                }
                                 p {
                                     margin: 0;
                                 }
@@ -150,15 +205,35 @@ html {
 
                 .hb-cta {
                     .cta-inner {
+                        display: flex;
+                        flex-direction: column;
+                        grid-gap: 8px;
+                        @media screen and (min-width: $desktop) {
+                            display: block;
+                        }
                         .form-container {
                             .popup-form {
                                 display: flex;
-                                flex-direction: column;s
-                                #email {
-
+                                flex-direction: column;
+                                grid-gap: 8px;
+                                label {
+                                    display: flex;
+                                    flex-direction: column;
+                                    grid-gap: 4px;
+                                    #hb-email {
+                                        @include text-input;
+                                    }
+                                    .error-text {
+                                        @include error-text;
+                                        display: none;
+                                        &.active {
+                                            display: block;
+                                        }
+                                    }
                                 }
-                                #submit {
 
+                                #hb-submit {
+                                    @include button-primary;
                                 }
                             }
                         }

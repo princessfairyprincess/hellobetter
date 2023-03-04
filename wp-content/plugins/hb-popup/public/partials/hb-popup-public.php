@@ -20,6 +20,7 @@ $image = "/wp-content/plugins/hb-popup/public/img/hb-header-img.png";
 $heading = "Mehr Unterstützung zum Mitnehmen?";
 $body = "Deine Verbindung zwischen Körper und Kopf stärken? Wir unterstützen dich mit vielen Infos und Strategien.";
 $email_placeholder = "beispiel@email.de";
+$email_error = "Bitte schreibe deine Email in dieser Form: beispiel@email.de";
 $submit_label = "Senden";
 $close_label = "Schließen";
 ?>
@@ -60,8 +61,13 @@ $close_label = "Schließen";
                     <div class="cta-inner">
                         <div class="form-container">
                             <form class="popup-form">
-                                <input type="email" id="hb-email" name="email"
-                                       placeholder="<?php echo $email_placeholder; ?>">
+                                <label for="hb-email">
+                                    <input type="email" id="hb-email" name="email"
+                                           placeholder="<?php echo $email_placeholder; ?>">
+                                    <span class="error-text">
+                                        <?php echo $email_error; ?>
+                                    </span>
+                                </label>
                                 <input type="submit" id="hb-submit" name="submit" value="<?php echo $submit_label; ?>">
                             </form>
                         </div>
